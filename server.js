@@ -4,9 +4,13 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
 
+const dbhost = process.env.DB_HOST || 'localhost';
+const dbuser = process.env.DB_USER || 'root';
+const dbpassword = process.env.DB_PASSWORD || '';
+const dbname = process.env.DB_NAME || 'thread';
+
 const USER_TYPE = 1;
 const ADMIN_TYPE = 2;
-
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,10 +19,10 @@ app.use(cors());
 
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'thread'
+  host: dbhost,
+  user: dbuser,
+  password: dbpassword,
+  database: dbname
 });
 
 connection.connect((err) => {
