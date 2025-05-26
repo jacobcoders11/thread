@@ -47,40 +47,6 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-// app.post('/login', (req, res) => {
-//   const { email, pass } = req.body;
-
-//   const query = `SELECT * FROM user WHERE email = ? AND password = ?`;
-//   connection.query(query, [email, pass], (err, results) => {
-
-
-
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).send('Internal Server Error');
-//     }
-
-//     if (results.length > 0) {
-//       req.session.user = { email: results[0].email };
-//       return res.status(200).json({ message: 'Login successful' }); // Optional
-//     } else {
-//       return res.status(401).json({ message: 'Invalid credentials' });
-//     }
-
-
-
-//     if (err) {
-//       console.error(err);
-//       res.status(500).send('Internal Server Error');
-//     } else if (results.length > 0) {
-//       req.session.user = { email: results[0].email };
-//     } else {
-//       // res.results;
-//       res.status(401)
-//     }
-//   });
-// });
-
 app.post('/login', (req, res) => {
   const { email, pass } = req.body;
 
@@ -180,7 +146,7 @@ app.post("/loginadmin",(req,res) =>{
 });
 
 app.get('/api/users', (req, res) => {
-  connection.query('SELECT * FROM user', (err, results) => {
+  connection.query('SELECT id, firstname, lastname, num, email, password, type FROM user', (err, results) => {
       if (err) {
           console.error('Error fetching user data:', err);
           res.status(500).json({ error: 'Internal Server Error' });

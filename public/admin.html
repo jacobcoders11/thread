@@ -60,8 +60,7 @@
                         <th>Last Name</th>
                         <th>Number</th>
                         <th>Email</th>
-                        <th>Password</th>   
-                        <th>Confirm Password</th>
+                        <th>Password</th>
                         <th>Type</th>
                     </tr>
                 </thead>
@@ -129,7 +128,7 @@
                 for (const key in item) {
                     const cell = row.insertCell();
                     // cell.textContent = item[key];
-                    if (key === 'password' || key === 'confirmpassword') {
+                    if (key === 'password') {
                         cell.textContent = '(confidential)';
                     } else if (key === 'type') {
                       if (item[key] === 1) {
