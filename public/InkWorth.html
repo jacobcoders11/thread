@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Brands.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <title>Ink Worth</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img alt="" src="images/INKB.png" width="125px">
+                </div>
+                <nav>
+                    <a id="name"></a>
+                    <ul class="menu">
+                        <li><a href="brands.html">BRANDS</a></li>
+                    </ul>
+                    <div class="icon-cart" >
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                          </svg>
+                          <span>0</span>
+                    </div>
+                </nav>	
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>A lifestyle and design that<br> will be surely inkworth!</h1>
+                    <p>Ink Worth: Where style and artistry collide! Our tagline says it all<br>
+                    - "A lifestyle and design that will be surely inkworth!"<br> 
+                    Discover clothing that's a canvas for your unique expression.</p>
+                </div>
+                <div class="col-2">
+                    <img alt="" src="images/INKP2.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img alt="" src="images/Ink.jpg">
+                </div>
+                <div class="col-3">
+                    <img alt="" src="images/INK2.jpg">
+                </div>
+                <div class="col-3">
+                    <img alt="" src="images/INK3.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Fetch the user's email from the server
+            const response = await fetch('/getUserName');
+            const userEmail = await response.text();
+
+            // Update the NAME section with the user's email
+            const nameElement = document.getElementById('name');
+            if (nameElement) {
+            nameElement.innerHTML = userEmail;  // Use innerHTML to update the content
+            }
+        });
+    </script>
+
+    <!-- LOOP PRODUCTS HERE -->
+    <script id="product-template" type="text/x-handlebars-template">
+        {{#each products}}
+          <div class="col-4">
+            <img alt="{{title}}" src="images/{{image}}">
+            <h4>{{name}}</h4>
+            <div class="rating">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+            </div>
+            <p>₱{{price}}</p>
+            <p>{{description}}</p>
+            <input type="hidden" name="product-code" value="{{id}}">
+            <form class="size-option" id="size-option">
+                <!-- Uncmment if will use dropdown as element -->
+                <!-- <label for="size-select-{{id}}">Select Size:</label> -->
+                <select name="size" id="size-select-{{id}}">
+                    <option disabled selected>Select a size</option>
+                    {{#each sizes}}
+                    {{#if (eq this 1)}}
+                        <option value="Small">Small</option>
+                    {{else if (eq this 2)}}
+                        <option value="Medium">Medium</option>
+                    {{else if (eq this 3)}}
+                        <option value="Large">Large</option>
+                    {{else if (eq this 4)}}
+                        <option value="XL">XL</option>
+                    {{/if}}
+                    {{/each}}
+                </select>
+            </form>
+                <button class="add-to-cart" onclick="document.getElementById">Add To Cart</button>
+        </div>
+        {{/each}}
+    </script>
+
+    <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row" id="product-container">
+            <!-- Rendered products will go here -->
+        </div>
+    </div>
+
+    <div class="cartTab">
+        <h1>SHOPPING CART</h1>
+        <div class ="listCart"> 
+            <div class="cart-item-details">
+                <span class="cart-item-image" name=""></span>
+                <span class="cart-item-name"name=""></span>
+                <span class="cart-item-price"name=""></span>
+                <span class="cart-item-size"name=""></span>
+            </div>
+            <div class="cart-item-controls">
+                <button class="decrement-quantity"></button>
+                <span class="cart-item-quantity" name=""></span>
+                <button class="increment-quantity"></button>
+            </div>  
+        </div>
+        <div class="btn">
+            <button class="close">CLOSE</button>
+            <button class="checkout">CHECK-OUT</a></button>
+        </div>
+        <h3>₱<span id="total"name="">0</span></h3>
+    </div>
+<script src="fetchProductBrandData.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchData('/api/products/inkworth', 'product-template', 'product-container');
+    });
+</script>
+<script src="app.js"></script>
+
+</body>
+</html>

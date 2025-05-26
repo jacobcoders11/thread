@@ -1,0 +1,379 @@
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.full-page
+{
+	height: 125vh;
+	width: 100%;
+	background-image: url('./BGTS.png');
+	background-position: center;
+    background-size: cover;
+    position: absolute;
+    padding-left: 1%;
+    padding-right: 1%;
+    box-sizing: border-box;
+}
+.navbar
+{
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	padding-left: 50px;
+	padding-right: 30px;
+	padding-top: 40px;
+	min-height: 250px;
+}
+nav
+{
+	flex: 1;
+	text-align: right;
+}
+nav ul
+{
+	display: inline-block;
+	list-style: none;
+}
+nav ul li
+{
+	display: inline-block;
+	margin-right: 70px;
+}
+nav ul li a
+{
+	text-decoration: none;
+	font-size: 20px;
+	color: Black;
+	font-family: 'Montserrat', sans-serif;
+}
+nav ul li button
+{
+	font-size: 20px;
+	color: Black;
+	outline: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+}
+nav ul li button:hover
+{
+	color: rgb(165, 164, 164);
+}
+nav ul li a:hover
+{
+	color: rgb(165, 164, 164);
+}
+a
+{
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+h1
+{
+	color: Black;
+	font-size: 65px;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+p
+{
+	color: Black;
+	font-family:Arial;
+	font-size:17px;
+	line-height:17px;
+}
+.about-section
+{
+	padding-left: 2%;
+    padding-right: 2%;
+    color: Black;
+    text-align: left;
+    position: relative;
+    top: 250px;
+    margin-left:30px;
+}
+.about-section h2 
+{
+    font-size: 27px;
+    margin-bottom: 10px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section p 
+{
+    font-size: 15px;
+    line-height: 16px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section h3 
+{
+    font-size: 27px;
+    margin-bottom: 10px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section p1 
+{
+    font-size: 15px;
+    line-height: 16px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section h4 
+{
+    font-size: 27px;
+    margin-bottom: 10px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section p2 
+{
+    font-size: 15px;
+    line-height: 16px;
+  	font-family: 'Montserrat', sans-serif;
+}
+.about-section h5 
+{
+    font-size: 27px;
+    margin-bottom: 10px;
+	font-family: 'Montserrat', sans-serif;
+}
+.about-section p3 
+{
+    font-size: 15px;
+    line-height: 16px;
+ 	font-family: 'Montserrat', sans-serif;
+}
+.brands-section
+{
+	padding-left: 2%;
+    padding-right: 2%;
+    color: black;
+    text-align: left;
+    position: relative;
+    top: 250px;
+    margin-left:30px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.brands-section h2 
+{
+    font-size: 27px;
+    margin-bottom: 10px;
+  	font-family: 'Montserrat', sans-serif;
+}
+.brands-section p 
+{
+    font-size: 15px;
+    line-height: 15px;
+	font-family: 'Montserrat', sans-serif;
+}
+.brand 
+{
+    width: 200px;
+    height: 230px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.3s;
+   	font-family: 'Montserrat', sans-serif;
+}
+
+.brand.Ink 
+{
+    background-image: url('images/./Ink.jpg');
+}
+
+.brand.Gab 
+{
+    background-image: url('images/./gaboogie model6.jpg');
+}
+.brand.Nvsb	
+{
+    background-image: url('images/./NSBm3.jpg');
+}
+.brand.St 
+{
+    background-image: url('images/./SaintTrad shirtcloseup3.jpg');
+}
+.brand:hover
+{
+	transform: translateY(-10px);
+}
+.brands-section h3 
+{
+    font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.brands-section p 
+{
+    font-size: 13px;
+ 	font-family: 'Montserrat', sans-serif;
+}
+#login-form
+{
+	display: none;
+}
+.form-box
+{
+	width:380px;
+	height:513px;
+	position:relative;
+	margin:2% auto;
+	background:rgba(0,0,0,0.3);
+	padding:10px;
+	overflow:hidden;
+	border-radius: 10px;
+}
+.button-box
+{
+	width:220px;
+	margin:35px auto;
+	position:relative;
+	box-shadow: 0 0 20px 9px #ff61241f;
+}
+.toggle-btn
+{
+	padding:10px 30px;
+	cursor:pointer;
+	background:transparent;
+	border:0;
+	outline: none;
+	position: relative;
+}
+#btn
+{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 110px;
+	height: 100%;
+	background: #c9c6c1;
+	border-radius: 30px;
+	transition: .5s;
+}
+.input-group-login
+{
+	top: 150px;
+	position:absolute;
+	width:280px;
+	transition:.5s;
+}
+.input-group-register
+{
+	top: 120px;
+	position:absolute;
+	width:280px;
+	transition:.5s;
+	color: white;
+}
+.input-field
+{
+	width: 100%;
+	padding:10px 0;
+	margin:5px 0;
+	border-left:0;
+	border-top:0;
+	border-right:0;
+	border-bottom: 1px solid #999;
+	outline:none;
+	background: transparent;
+}
+.submit-btn
+{
+	width: 85%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: #c9c6c1;
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+}
+.check-box
+{
+	margin: 30px 10px 34px 0;
+}
+span
+{
+	color:white;
+	font-size:14px;
+	bottom: 68px;
+	position:absolute;
+}
+#login
+{
+	left:50px;
+}
+#login input
+{
+	color:white;
+	font-size:15;
+}
+#register
+{
+	left:450px;
+	border-radius: 10px;
+}
+#register input
+{
+	color:white;
+	font-size: 15;
+}
+
+@media only screen and (max-width: 768px) {
+	
+  
+	.navbar {
+	  flex-direction: row;
+	  align-items: center;
+	}
+  
+	nav {
+	  text-align: left;
+	}
+  
+	nav ul li {
+	  display: inline-block;
+	  margin-right: 20px;
+	  margin-bottom: 0;
+	}
+  
+	.full-page {
+	  height: auto;
+	  min-height: 100vh;
+	  top: 0;
+	}
+  
+	.about-section,
+	.brands-section {
+	  top: 0;
+	}
+  }
+  
+  @media only screen and (max-width: 480px) {
+	
+  
+	nav {
+	  text-align: center;
+	}
+  
+	nav ul li {
+	  display: block;
+	  margin-right: 0;
+	}
+  
+	.about-section,
+	.brands-section {
+	  margin-left: 10px;
+	  margin-right: 10px;
+	}
+  }

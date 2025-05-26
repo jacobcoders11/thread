@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="brand">
+            <img alt="" src="images/TSNBG.png" width="200px" height="115px">
+        </div>
+        <div class="sidemenu">
+            <div class="side-user">
+                <div class="user-role">
+                    <small>Admin</small>
+                    <p>ThreadSpectrum</p>
+                </div>                                
+            </div>
+            <ul>
+                <li>
+                    <a href="#" onclick="showUserTable()">
+                        <span id="User" class="la la-user"></span>
+                        <span>User</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPurchaseTable()">
+                        <span id="Purchased" class="la la-check-circle"></span>
+                        <span>Purchased Orders</span>
+                    </a>
+                </li>
+                <li><a href="index.html">
+                        <span id="logout" class='bx bx-log-out'></span>
+                        <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <label for="menu-toggle" class="menu-toggler">
+                <span class="las la-bars"></span>
+            </label>
+        </header>
+
+   
+        <div id="userTable" style="display: none;">
+            <h2>User Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Number</th>
+                        <th>Email</th>
+                        <th>Password</th>   
+                        <th>Confirm Password</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="purchaseTable" style="display: none;">
+            <h2>Purchase Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Email</th>
+                        <th width="200">Product Name</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                        <th>Shipping Name</th>
+                        <th>Shipping Email</th>
+                        <th>Shipping Address</th>
+                        <th>Shipping Contact</th>
+                        <th class="date-time">Date and Time</th>
+                    </tr>
+                </thead>
+                <tbody id="purchaseTableBody"></tbody>
+            </table>
+        </div>
+    </div>  
+    <script src="server.js"></script>  
+    <script>
+        function fetchData(url, callback) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => callback(data))
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    
+        function showUserTable() {
+            document.getElementById('userTable').style.display = 'block';
+            document.getElementById('purchaseTable').style.display = 'none';
+    
+            fetchData('/api/users', function (data) {
+                populateTable('userTableBody', data);
+            });
+        }
+    
+        function showPurchaseTable() {
+            document.getElementById('userTable').style.display = 'none';
+            document.getElementById('purchaseTable').style.display = 'block';
+    
+            fetchData('/api/purchases', function (data) {
+                populateTable('purchaseTableBody', data);
+                console.log(data);
+            });
+        }
+    
+        function populateTable(tableBodyId, data) {
+            const tableBody = document.getElementById(tableBodyId);
+            tableBody.innerHTML = '';
+    
+            data.forEach(item => {
+                const row = tableBody.insertRow();
+                for (const key in item) {
+                    const cell = row.insertCell();
+                    // cell.textContent = item[key];
+                    if (key === 'password' || key === 'confirmpassword') {
+                        cell.textContent = '(confidential)';
+                    } else if (key === 'type') {
+                      if (item[key] === 1) {
+                          cell.textContent = 'User';
+                      } else if (item[key] === 2) {
+                          cell.textContent = 'Admin';
+                      } else {
+                          cell.textContent = '-'
+                      }
+                    } else if (key === 'created_at') {  // or your date field name
+                        const dateObj = new Date(item[key]);
+                        const year = dateObj.getFullYear();
+                        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                        const day = String(dateObj.getDate()).padStart(2, '0');
+                        const hours = String(dateObj.getHours()).padStart(2, '0');
+                        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+                        cell.textContent = `${year}-${month}-${day} ${hours}:${minutes}`;
+                    } else {
+                        cell.textContent = item[key];
+                    }
+                }
+            });
+        }
+    </script>
+    
+</body>
+</html>

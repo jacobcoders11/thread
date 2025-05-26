@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadSpectrum</title>
+    <link rel="stylesheet" href="Branches.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <img alt="" src="images/TSNBG.png" width="350px" height="250px">
+                <h1>ThreadSpectrum</h1>
+                <p>Discover the Vibrant Tapestry of Filipino Craftsmanship at ThreadSpectrum:<br>
+                Your Portal to Local Excellence.</p>
+            </div>
+            <nav>
+                <ul id='Menu Items'>
+                    <li><a href='index.html'>HOME</a></li>
+                    <li><a href='About.html'>ABOUT US</a></li>
+                    <li>
+                        <button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">LOG IN</button>
+                    </li>
+                    <li><a href="logmin.html">ADMIN</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id='login-form' class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button' onclick='loginn()' class='toggle-btn'>Log In</button>
+                    <button type='button' onclick='registerr()' class='toggle-btn'>Register</button>
+                </div>
+                <form id='login' method="post" class='input-group-login'>
+                    <input type='email' name='email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' name='pass' class='input-field' placeholder='Enter Password' required>
+                    <input type='checkbox' class='check-box'><span>Remember Password</span>
+                    <button type='submit' class='submit-btn'>Log In</button>
+                </form>
+                <form id='register' action='register' method='post' class='input-group-register'>
+                    <input type='text' name='fname' class='input-field' placeholder='First Name' required>
+                    <input type='text' name='lname' class='input-field' placeholder='Last Name' required>
+                    <input type='Number' name='num' class='input-field' placeholder='Number' required>
+                    <input type='email' name='email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' name='pass' class='input-field' placeholder='Enter Password' required>
+                    <input type='password' name='cpass' class='input-field' placeholder='Confirm Password' required>
+                    <input type='checkbox' class='check-box'><span> I agree to the terms and conditions</span>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a = document.getElementById('login');
+        var b = document.getElementById('register');
+        var c = document.getElementById('btn');
+        function registerr() {
+            a.style.left = '-400px';
+            b.style.left = '50px';
+            c.style.left = '110px';
+        }
+        function loginn() {
+            a.style.left = '50px';
+            b.style.left = '450px';
+            c.style.left = '0px';
+        }
+    </script>
+    <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        
+        document.getElementById('login').addEventListener('submit', async function (e) {
+        e.preventDefault(); // prevent the default form submit
+
+        const form = e.target;
+        const email = form.email.value;
+        const pass = form.pass.value;
+
+        try {
+            const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, pass })
+            });
+
+            if (response.ok) {
+                window.location.href = '/brands.html';
+            }
+
+            if (response.status === 401) {
+                alert("Invalid Credentials. Please try again!"); // Show alert only if credentials are invalid
+            }
+
+        } catch (err) {
+            console.error('Login request failed:', error);
+        }
+        });
+
+
+    </script>
+    <script src="server.js"></script>
+</body>
+</html>

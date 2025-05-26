@@ -1,0 +1,200 @@
+:root{
+    --main: orange;
+    --bg: #0B1218;
+    --bg-body: #131D28;
+}
+
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input, button {
+    outline: none;
+}
+
+#menu-toggle {
+    outline: none;
+}
+
+#menu-toggle:checked ~ .sidebar .brand h2 {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar .side-img {
+    height: 50px;
+    width: 50px;
+}
+
+#menu-toggle:checked ~ .sidebar .side-user {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar li a span:last-child {
+    display: none;
+}
+
+#menu-toggle:checked ~ .sidebar{
+    width: 65px;
+}
+
+#menu-toggle:checked ~ .main-content header {
+    left: calc(65px + 1rem);
+}
+
+#menu-toggle:checked ~ .main-content {
+    margin-left: 50px;
+}
+#userTable th.date-time,
+#userTable td.date-time,
+#purchaseTable th.date-time,
+#purchaseTable td.date-time {
+    font-weight: bold; /* Make the text bold */
+    padding: 8px; /* Add padding for better spacing */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: var(--bg); /* Use a background color from the defined variables */
+    color: #fff; /* Text color for better visibility */
+}
+.sidebar {
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: rgb(209, 208, 208);
+    width: 250px;
+    overflow-y: auto;
+    transition: width 300ms;
+}
+
+.brand {
+    padding: .5rem 1rem;
+    display: flex;
+    color: darkblue;
+    align-items: center;
+    height: 70px;
+}
+
+.brand span {
+    font-size: 1.8rem;
+    margin-right: .5rem;
+}
+
+.sidebar-user {
+    margin: 2.5rem 0rem;
+}
+
+.side-img {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: inline-block;
+    border-radius: 300px;
+}
+
+.side-user {
+    text-align: center;
+    color: black;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.side-user small {
+    display: inline-block;
+    color: purple;
+}
+
+.sidemenu {
+    padding: .5rem;
+    overflow-y: auto;
+}
+
+.sidemenu li {
+    margin-bottom: .9rem;
+}
+
+.sidemenu a {
+    color: #FFF;
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidemenu a span:first-child {
+    font-size: 1.3rem;
+    padding: 0rem .6rem;
+}
+
+.sidemenu a.active {
+    background-color: var(--main);
+    color: #FFF;
+    border-radius: 5px;
+    height: 45px;
+}
+
+.main-content{
+    margin-left: 250px;
+    min-height: 100vh;
+    background: #FFF;
+    padding: .5rem;
+
+}
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(209, 208, 208);
+    padding: 0rem 1rem;
+    position: fixed;
+    left: calc(280px + .5rem);
+    right: .5rem;
+    top: .5rem;
+    border-radius: 3px;
+}
+
+.menu-toggler {
+    height: 45px;
+    width: 45px;
+    background: gray;
+    color: #FFF;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+}
+.main-content {
+    margin: 2.5rem auto; 
+    max-width: 1050px; 
+    min-height: 150vh;
+    background: #FFF;
+    padding: 25px; 
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    align-items: center;
+}
+
+th {
+    background-color: var(--main);
+    color: #fff;
+    align-items: center;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands in ThreadSpectrum</title>
+    <link rel="stylesheet" href="Branches.css">
+</head>
+
+<body>
+
+    <div class="full-page">
+    	<div class="navbar">
+            <div>
+                <img alt="" src="images/TSNBG.png" width="350px" height="250px">
+            </div>
+            <nav>
+                <ul id='Menu Items'>
+                    <li><a href="brands.html">BRANDS</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
+                    <a id="name">NAME</a>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="brands-section">
+        <h2>Discover the Rich Fabric of Philippine Heritage:<br>
+        Introducing ThreadSpectrum and its Curated Collection<br> of Local Brands.</h2>
+        <p>ThreadSpectrum invites you to embark on a journey through the intricate tapestry of Philippine heritage.<br>
+         Step into a world of exquisite craftsmanship and culture as we introduce our thoughtfully curated collection<br>
+         of local brands,each weaving a unique story that celebrates the essence of Filipino craftsmanship and tradition.</p>
+    </div>
+    <div class="brands-section">
+        <div class="brand Ink">
+       		<a href="InkWorth.html" class="brand Ink"></a>
+        </div>
+        <div class="brand Gab">
+        <a href="Gaboogie.html" class="brand Gab"></a>
+            
+        </div>
+        <div class="brand Nvsb">
+        <a href="NeverSober.html" class="brand Nvsb"></a>
+            
+        </div>
+        <div class="brand St">
+        <a href="SaintTrad.html" class="brand St"></a>
+        </div>
+    </div> 
+    <script src="server.js"></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', async function () {
+    // Fetch the user's email from the server
+    const response = await fetch('/getUserName');
+    const userEmail = await response.text();
+
+    // Update the NAME section with the user's email
+    const nameElement = document.getElementById('name');
+    if (nameElement) {
+      nameElement.innerHTML = userEmail;  // Use innerHTML to update the content
+    }
+  });
+    </script>
+</body>
+</html>
